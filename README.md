@@ -1099,6 +1099,6 @@ Now you can go to the postman and go to the getProductDetails and send the Get R
 	    next();
 	})
 ```
-*{token}* gives the value of token in the console but the *token* gives the output like ***{"token": "value"}***
-*jwt.verify* is used to verify that the token and the JWT_SECRET is present and authentic or not.
-The *id* in decodedData is coming from the id that it got while making the *JWT Token* in the *userModel.js*
+*{token}* gives the value of token in the console but the *token* gives the output like ***{"token": "value"}***\
+*jwt.verify* is used to verify that the token and the JWT_SECRET is present and authentic or not.\
+The *id* in decodedData is coming from the id that it got while making the *JWT Token* in the *userModel.js*\
