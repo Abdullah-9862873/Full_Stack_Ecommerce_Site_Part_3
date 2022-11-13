@@ -706,17 +706,17 @@ Also add the "productCount" as JSON in "getProductDetails" and update the "getPr
 	});
 ```
 
-##Backend User and Password Authentication
+## Backend User and Password Authentication
 
 **Step 55:** Open the terminal and add the following packages into your workplace
 ```
 			npm install bcryptjs jsonwebtoken validator nodemailer cookie-parser body-parser
 ```
 
-**bcrypt:** is used to hash the passwords of users
-**validator:** is used to validate the user has entered the email and nothing else in the email section
-**nodemailer:** is used to send the OTP
-**cookie-parser:** is used to store the jsonwebtoken inside cookies
+**bcrypt:** is used to hash the passwords of users\
+**validator:** is used to validate the user has entered the email and nothing else in the email section\
+**nodemailer:** is used to send the OTP\
+**cookie-parser:** is used to store the jsonwebtoken inside cookies\
 
 
 **Step 56:** Inside the **"models"** folder. Make a new file named **"userModel.js"** and type the following code in it
@@ -766,7 +766,7 @@ Also add the "productCount" as JSON in "getProductDetails" and update the "getPr
 ```
 
 ## Register a User
-**Step 57:** Make a new file named **"userController.js"** inside **"models"**
+**Step 57:** Make a new file named **"userController.js"** inside **"controllers"**
 
 ```
 		const ErrorHandler = require("../utils/errorhandler");
@@ -804,17 +804,19 @@ Also add the "productCount" as JSON in "getProductDetails" and update the "getPr
 	module.exports = router;
 ```
 
-**Step 59:** Go to the "app.js" file and add the following code below where the "product" route is imported
+**Step 59:** Go to the **"app.js"** file and add the following code below where the **"product"** route is imported
 ```
 			const user = require("./routes/userRoute");
 ```
-	And add the following code into the same file below the **app.use("/api/v1",product)**
+
+And add the following code into the same file below the **app.use("/api/v1",product)**
 ```
 			app.use("/api/v1",user)
 ```
-	Now your **"app.js"** will look something like this
+
+Now your **"app.js"** will look something like this
 ```
-			const express = require("express");
+	const express = require("express");
 	const app = express();
 	const errorMiddleware = require("./middleware/error");
 
@@ -849,8 +851,8 @@ Also add the "productCount" as JSON in "getProductDetails" and update the "getPr
 	    this.password = await bcrypt.hash(this.password,10);
 	})
 ```
-	In this code we have used **function** rather than a callback function and the reason is that we can use *this* inside the **function** but cannot use it inside **callback** function
-	*If* condition is showing that if the password is modified by the user then only hash it othervise leave it and in this way we'll save the code from hashing the hashed passwords.
+In this code we have used **function** rather than a callback function and the reason is that we can use *this* inside the **function** but cannot use it inside **callback** function
+*If* condition is showing that if the password is modified by the user then only hash it othervise leave it and in this way we'll save the code from hashing the hashed passwords.
 
 **Step 62:** Go to the file **"userModel.js"** inside **"models"** folder and import the following
 ```
@@ -930,11 +932,11 @@ Now when you create a user using Post request inside the postman then it will no
 	})
 ```
 
-*400*: Bad Request Error
-*401*: Unautorized
+*400*: Bad Request Error\
+*401*: Unautorized\
 
-In this code *.select("+password")* is used because while creating the user Model we have make the password to select false so here we have to mannually select it
-First we check if the user is present and then we get the password and compare it with the database
+In this code ***.select("+password")*** is used because while creating the user Model we have make the password to ***select false*** so here we have to mannually select it\
+First we check if the user is present and then we get the password and compare it with the database\
 
 **Step 67:** Go to the **"userModel.js"** inside the folder **"models"** and type the following code above the *module.exports = mongoose.model("User",userSchema);*
 ```
@@ -953,7 +955,7 @@ Also you have to import the *loginUser* like
 	const { registerUser, loginUser } = require("../controllers/userController");
 ```
 
-**Step 67:** *** Now you don't have to write the following code again and again in the userController.js***
+**Step 67:** Now you don't have to write the following code again and again in the userController.js
 ```
 	    const token = user.getJWTToken();
 
@@ -992,17 +994,17 @@ Now go to the **"userController.js"** file in the **"controllers"** folder and i
 		const sendToken = require("../utils/jwtToken");
 ```
 
-After importing replace the upper code from "Register the user" to the following
+After importing replace the upper code from **"Register the user"** to the following
 ```
 		sendToken(user, 201, res);
 ```
 
-And replace the upper code from "Login User" to the following 
+And replace the upper code from **"Login User"** to the following 
 ```
 		sendToken(user,200, res);
 ```
 
-Now the final "userController.js" will look like
+Now the final **"userController.js"** will look like
 ```
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
@@ -1054,7 +1056,7 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 ```
 Now when you send the ***Login User*** request in postman then it will show you the results in body and cookie in cookie
 
-**Step 69:** To make the logged in user access something let's say "getAllProducts" we make a new file named **"auth.js"** inside **"middleware"** folder and write the following code in it
+**Step 69:** To make the logged in user, access something let's say "getAllProducts", we make a new file named **"auth.js"** inside **"middleware"** folder and write the following code in it
 ```
 	const catchAsyncErrors = require("./catchAsyncErrors");
 
@@ -1072,7 +1074,7 @@ Now update the products route into the following
 			router.route("/products").get(isAuthenticatedUser, getAllProducts);
 ```
 
-**Step 70:** Now go to the **"app.js"** and add the following code below the *app.use(express.json())*
+**Step 70:** Now go to the **"app.js"** and add the following code below the ***app.use(express.json())***
 ```
 			const cookieParser = require("cookie-parser");
 ```
