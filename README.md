@@ -1,15 +1,15 @@
 # Full_Stack_Ecommerce_Site_Part_3
-Step 1: Make two folders "frontend" and "backend"
+**Step 1:** Make two folders "frontend" and "backend"
 
-Step 2: Inside backend create two files "app.js" and "server.js"
+**Step 2:** Inside backend create two files "app.js" and "server.js"
 
-Step 3: Inside root directory open a terminal and type command, "npm init" and inside the entry point, type "backend/server.js"
+**Step 3:** Inside root directory open a terminal and type command, "npm init" and inside the entry point, type "backend/server.js"
 
-Step 4: Install the packages "npm install mongoose express dotenv"
+**Step 4:** Install the packages "npm install mongoose express dotenv"
 
-Step 5: Install the package "npm install nodemon"
+**Step 5:** Install the package "npm install nodemon"
 
-Step 6: Setup the app.js file as
+**Step 6:** Setup the app.js file as
 ```
 
 			const express = require("express");
@@ -19,7 +19,7 @@ Step 6: Setup the app.js file as
 			module.exports = app;
 ```
 
-Step 7: Setup the server.js file as
+**Step 7:** Setup the server.js file as
 ```
 			const app = require("./app");
 
@@ -31,27 +31,27 @@ Step 8: Make a folder inside "backend" by the name "config" and inside config, m
 ```
 			PORT=4000
 ```
-Step 9: Import dotenv in "server.js" file as:
+**Step 9:** Import dotenv in "server.js" file as:
 ```
 			const dotenv = require("dotenv")
 			dotenv.config({path:"backend/config/config.env"})
 ```
-Step 10: Add the following inside the "package.json" file, inside the "script" and here if we run start then it will open it in using node and if we run dev then it will open it using nodemon and we will use dev in the development mode but in the production mode we use node
+**Step 10:** Add the following inside the "package.json" file, inside the "script" and here if we run start then it will open it in using node and if we run dev then it will open it using nodemon and we will use dev in the development mode but in the production mode we use node
 ```
 			    "start": "node backend/server.js",
 			    "dev": "nodemon backend/server.js"
 ```
-Step 11: Make two folders inside the "backend" named "routes" and "controllers"
+**Step 11:** Make two folders inside the "backend" named "routes" and "controllers"
 
-Step 12: Inside the "routes" make a new file "productRoute.js" and inside the "controllers", make a new file named "productController.js"
+**Step 12:** Inside the "routes" make a new file "productRoute.js" and inside the "controllers", make a new file named "productController.js"
 
-Step 13: Inside the "productController.js", type the following
+**Step 13:** Inside the "productController.js", type the following
 ```
 			exports.getAllProducts = (req, res) => {
  			   res.status(200).json({message: "route is working fine"});
 			}
 ```
-Step 14: Inside the "productRoute.js", type the following
+**Step 14:** Inside the "productRoute.js", type the following
 ```
 			const express = require("express");
 			const { getAllProducts } = require("../controllers/productController");
@@ -62,7 +62,7 @@ Step 14: Inside the "productRoute.js", type the following
 
 			module.exports = router;
 ```
-Step 15: Import the Route in your "app.js" file  and now your app.js file will look like the following:
+**Step 15:** Import the Route in your "app.js" file  and now your app.js file will look like the following:
 ```
 			const express = require("express");
 			const app = express();
@@ -76,20 +76,20 @@ Step 15: Import the Route in your "app.js" file  and now your app.js file will l
 
 			module.exports = app;
 ```			
-Step 16: Now open the terminal and run the app in the dev mode by
+**Step 16:** Now open the terminal and run the app in the dev mode by
 ```
 			npm run dev
 ```
-Step 17: Now go to the postman and make a new Collection named "Ecommerce"... Now click on the + option at the top left and make a get request to 
+**Step 17:** Now go to the postman and make a new Collection named "Ecommerce"... Now click on the + option at the top left and make a get request to 
 			http://localhost:4000/api/v1/products
 
 	You'll see the message on the screen inside the postman that "server is working fine"
 
-_______________________________Connecting Database______________________________________________________
+## Connecting Database
 
-Step 18: Create a folder inside "config", named "database.js"
+**Step 18:** Create a folder inside "config", named "database.js"
 
-Step 19: Write the following code inside "database.js"
+**Step 19:** Write the following code inside "database.js"
 ```
 			const mongoose = require("mongoose");
 
@@ -105,21 +105,21 @@ Step 19: Write the following code inside "database.js"
 			module.exports = connectDatabase;
 
 ```
-Step 20: Import the database inside the "server.js"
+**Step 20:** Import the database inside the "server.js"
 ```
 			const connectDatabase = require("./config/database");
 ```
-Step 21: Run the connectDatabase function
+**Step 21:** Run the connectDatabase function
 ```
 			connectDatabase();
 ```
-______________________________________________models_________________________________________________________
+## models
 
-Step 22: Make a new folder named "models" inside "backend" folder.
+**Step 22:** Make a new folder named "models" inside "backend" folder.
 
-Step 23: Make a new file named "productModel.js" inside "models"
+**Step 23:** Make a new file named "productModel.js" inside "models"
 
-Step 24: Make a product Schema inside "productModels.js"
+**Step 24:** Make a product Schema inside "productModels.js"
 ```
 			const mongoose = require("mongoose");
 
@@ -192,9 +192,9 @@ Step 24: Make a product Schema inside "productModels.js"
 
 			module.exports = mongoose.model("Product", productSchema);
 ```
-______________________________________________createProduct_________________________________________________________
+## createProduct
 
-Step 25: Go to the "productController.js" inside "controllers" and type the following
+**Step 25:** Go to the "productController.js" inside "controllers" and type the following
 ```
 				// Create Product --- Admin
 
@@ -207,7 +207,7 @@ Step 25: Go to the "productController.js" inside "controllers" and type the foll
 				    })
 				}
 ```
-Step 26: Now the "productController.js" will be something like
+**Step 26:** Now the "productController.js" will be something like
 ```
 				const Product = require("../models/productModel");
 
@@ -235,14 +235,14 @@ Step 26: Now the "productController.js" will be something like
 				    )
 				}
 ```
-Step 27: Add a new router inside "productRoute.js" 
+**Step 27:** Add a new router inside "productRoute.js" 
 ```
 				router.route("/product/new").post(createProduct);
 ```
 
-______________________________________________Update Product_________________________________________________________
+## Update Product
 
-Step 28: Add the following in "productController.js" 
+**Step 28:** Add the following in "productController.js" 
 ```
 				// Update Product --- Admin
 
@@ -269,9 +269,9 @@ Step 28: Add the following in "productController.js"
 				    })
 				}
 ```
-______________________________________________Delete Product_________________________________________________________
+## Delete Product
 
-Step 29: Add the following in "productController.js" 
+**Step 29:** Add the following in "productController.js" 
 ```
 				// Delete Product --- Admin
 
@@ -293,9 +293,9 @@ Step 29: Add the following in "productController.js"
 				    })
 				}
 ```
-_____________________________________________Get Product Details_____________________________________________
+## Get Product Details
 
-Step 30: Inside the "productController.js" type the following
+**Step 30:** Inside the "productController.js" type the following
 ```
 
 				// Get Product Details
@@ -315,17 +315,17 @@ Step 30: Inside the "productController.js" type the following
 				    })
 				}
 ```
-Step 31: Add the routes of the above insde the "productRoute.js" as
+**Step 31:** Add the routes of the above insde the "productRoute.js" as
 ```				
 				router.route("/products").get(getAllProducts);
 				router.route("/product/new").post(createProduct);
 				router.route("/product/:id").put(updateProduct).delete(deleteProduct).get(getProductDetails);
 ```
-____________________________________________Error Handling_________________________________________________
+## Error Handling
 
-Step 32: Make a folder named "utils" inside the "backend" folder and make a file named "errorhandler.js" inside it
+**Step 32:** Make a folder named "utils" inside the "backend" folder and make a file named "errorhandler.js" inside it
 
-Step 33: Type the following inside the file
+**Step 33:** Type the following inside the file
 ```
 				class ErrorHandler extends Error{
    				 constructor(message, statusCode){
@@ -338,9 +338,9 @@ Step 33: Type the following inside the file
 
 				module.exports = ErrorHandler;
 ```
-Step 34: Make a new folder named "middleware" inside the backend and make a new file named "error.js" inside it
+**Step 34:** Make a new folder named "middleware" inside the backend and make a new file named "error.js" inside it
 
-Step 35: Type the following inside the "error.js" file
+**Step 35:** Type the following inside the "error.js" file
 ```
 				const ErrorHandler = require("../utils/errorhandler");
 
@@ -354,15 +354,15 @@ Step 35: Type the following inside the "error.js" file
 				    })
 				}
 ```
-Step 36: Import the errorMiddleware inside the "app.js"
+**Step 36:** Import the errorMiddleware inside the "app.js"
 ```
 				const errorMiddleware = require("./middleware/error");
 ```
-Step 37: Use the errorMiddleware inside the "app.js"... Remember to use it below "app.use("/api/v1",product)".
+**Step 37:** Use the errorMiddleware inside the "app.js"... Remember to use it below "app.use("/api/v1",product)".
 ```
 				app.use(errorMiddleware);
 ```
-Step 38: Now you can go to the "productController.js" and update the files for example the "Get Product Details" will look like the following. But you have to import it to the "productController.js" file.
+**Step 38:** Now you can go to the "productController.js" and update the files for example the "Get Product Details" will look like the following. But you have to import it to the "productController.js" file.
 ```
 				const ErrorHandler = require("../utils/errorhandler");
 				// Get Product Details
@@ -381,11 +381,11 @@ Step 38: Now you can go to the "productController.js" and update the files for e
 ```
 	Now if you don't give a valid product id while finding it or getting it then it will display the error accordingly
 
-___________________________________________Handling Async Errors_________________________________________________
+## Handling Async Errors
 
 It is a good practice to write .then and .catch inside async await functions. To avoid writing .then and .catch again and again inside the product controller we'll make an error handler for it
 
-Step 39: Make a new file inside the "middleware" named "catchAsynErrors.js" and add the following code into it.
+**Step 39:** Make a new file inside the "middleware" named "catchAsynErrors.js" and add the following code into it.
 ```
 				const catchAsyncErrors = theFunc => (req, res, next) => {
 				    Promise.resolve(theFunc(req, res, next)).catch(next);
@@ -393,11 +393,11 @@ Step 39: Make a new file inside the "middleware" named "catchAsynErrors.js" and 
 
 				module.exports = catchAsyncErrors;
 ```			
-step 40: Import it inside "productController.js".
+**step 40:** Import it inside "productController.js".
 ```
 				const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 ```
-Step 41: Now update the "productController.js".
+**Step 41:** Now update the "productController.js".
 ```
 
 	const Product = require("../models/productModel");
@@ -488,19 +488,19 @@ Step 41: Now update the "productController.js".
 ```	
 Now if you don't type the name or any required field while creating the product then it won't crash the server rather it will display the error
 
-________________________________________________Unhandled Promise Rejection__________________________________________
+## Unhandled Promise Rejection
 
 
 If we change the "DB_URI"  inside the "config.env" file to "mongodb://localhost:27017/Ecommerce" then it will throw an error and to resolve this we can make the following changes inside the "server.js"
 We have to crash the Server 
 
-Step 42: Inside the "server.js" update the app.listen to the following
+**Step 42:** Inside the "server.js" update the app.listen to the following
 ```
 	const server = app.listen(process.env.PORT, ()=>{
 	    console.log(`Server is listening on http://localhost:${process.env.PORT}`);
 	})
 ```
-Step 43: Inside the "server.js" write the following code at the end
+**Step 43:** Inside the "server.js" write the following code at the end
 ```
 	// Unhandled Promsie Rejection
 
@@ -513,7 +513,7 @@ Step 43: Inside the "server.js" write the following code at the end
 	    })
 	})
 ```
-Step 44: Now you can remove the ".catch" method inside "database.js" and your " database.js" will look like.
+**Step 44:** Now you can remove the ".catch" method inside "database.js" and your " database.js" will look like.
 ```
 	const mongoose = require("mongoose");
 
@@ -525,11 +525,11 @@ Step 44: Now you can remove the ".catch" method inside "database.js" and your " 
 
 	module.exports = connectDatabase;
 ```
-___________________________________________Handling Uncaught Exception_________________________________________
+## Handling Uncaught Exception
 
 If you type "console.log(youtube)" in your "server.js" then it will throw an error which says "youtube is not defined". These type of errors are called uncaught errors.
 
-Step 45: Inside the "server.js" file at the top of the file, type the following code
+**Step 45:** Inside the "server.js" file at the top of the file, type the following code
 ```
 	// Uncaught Exception Error
 	process.on("uncaughtException", err=>{
@@ -538,8 +538,8 @@ Step 45: Inside the "server.js" file at the top of the file, type the following 
 	    process.exit(1);
 	})
 ```
-__________________________________________Handling Cast Error Mongodb_________________________________________
-Step 46: If you give the less or more number of characters in the id then it will show you a cast error and to handle this error we can write the following code inside the "errorhandler.js" just below the line "err.message = err.message || "Internal Server Error";"
+## Handling Cast Error Mongodb
+**Step 46:** If you give the less or more number of characters in the id then it will show you a cast error and to handle this error we can write the following code inside the "errorhandler.js" just below the line "err.message = err.message || "Internal Server Error";"
 ```
 	// Mongodb Cast Error Handler
 	    if(err.name === "CastError"){
@@ -547,8 +547,8 @@ Step 46: If you give the less or more number of characters in the id then it wil
 	        err = new ErrorHandler(message, 400);
 	    }
 ```
-__________________________________________Searching Products by Name________________________________________
-Step 47: Make a new file inside "utils" named "apifeatures.js" and add the following code into it.
+## Searching Products by Name
+**Step 47:** Make a new file inside "utils" named "apifeatures.js" and add the following code into it.
 ```
 	class ApiFeatures {
 	    constructor(query, queryStr){
@@ -573,7 +573,7 @@ Step 47: Make a new file inside "utils" named "apifeatures.js" and add the follo
 	
 	module.exports = ApiFeatures;
 ```
-Step 48: Update the "getAllProducts" section of "productController.js".
+**Step 48:** Update the "getAllProducts" section of "productController.js".
 ```
 	// Get All Products
 	exports.getAllProducts = catchAsyncErrors(async (req, res) => {
@@ -588,8 +588,8 @@ Step 48: Update the "getAllProducts" section of "productController.js".
 	    )
 	});
 ```
-__________________________________________Adding filter Section_______________________________________
-Step 49: Add the following object below the search() object inside "ApiFeatures" class inside "apifeatures.js".
+## Adding filter Section
+**Step 49:** Add the following object below the search() object inside "ApiFeatures" class inside "apifeatures.js".
 ```
 	    filter(){
 	        const queryCopy = {...this.queryStr};
@@ -608,7 +608,7 @@ Here we have made the copy of queryStr first and then stored the copy inside the
 Also, the queryStr is an object which is {"category" : "something"} so no need to pass the queryCopy as an object inside this.query.find()
 Also, this is case Sensitive so a category of "Laptop" will be searched as a "Laptop" only
 
-Step 50: Update the "getAllProducts" of "productController.js".
+**Step 50:** Update the "getAllProducts" of "productController.js".
 ```
 	// Get All Products
 	exports.getAllProducts = catchAsyncErrors(async (req, res) => {
@@ -623,9 +623,9 @@ Step 50: Update the "getAllProducts" of "productController.js".
 	    )
 	});
 ```
-_________________________________Filter for pricing and Rating________________________________________
+## Filter for pricing and Rating
 
-Step 51: To add the pricing and rating, update the filter() inisde the "apifeatures.js" as.
+**Step 51:** To add the pricing and rating, update the filter() inisde the "apifeatures.js" as.
 ```
 	filter(){
 	        const queryCopy = {...this.queryStr};
@@ -654,8 +654,8 @@ Now you can go to the postman and type the following
 ```
 And this will filter the products for you
 
-____________________________________________Pagination_________________________________________________
-Step 52: Make the following changes inside **"getAllProducts"** inside **"productController.js"**
+## Pagination
+**Step 52:** Make the following changes inside **"getAllProducts"** inside **"productController.js"**
 ```
 
 exports.getAllProducts = catchAsyncErrors(async (req, res) => {
@@ -671,7 +671,7 @@ exports.getAllProducts = catchAsyncErrors(async (req, res) => {
     )
 });
 ```
-Step 53: Write the following code inside the **"ApiFeatures"** class inside **"apifeatures.js"**
+**Step 53:** Write the following code inside the **"ApiFeatures"** class inside **"apifeatures.js"**
 ```
     pagination(resultPerPage){
         const currentPage = this.queryStr.page;
@@ -683,7 +683,7 @@ Step 53: Write the following code inside the **"ApiFeatures"** class inside **"a
 ```
 **currentPage** is the page where the user is, and **skip** is the number of objects to skip. Now you can create 10 products inside the **"create Product"** inside Postman and give the following inside **"KEY"** and **"VALUE"**
 
-Step 54: Inside the "getAllProducts" section in "productController.js" write the following code below the "const resultPerPage = 5;"
+**Step 54:** Inside the "getAllProducts" section in "productController.js" write the following code below the "const resultPerPage = 5;"
 ```
 			const productCount = await Product.countDocuments();
 ```
@@ -708,7 +708,7 @@ Also add the "productCount" as JSON in "getProductDetails" and update the "getPr
 
 ##Backend User and Password Authentication
 
-Step 55: Open the terminal and add the following packages into your workplace
+**Step 55:** Open the terminal and add the following packages into your workplace
 ```
 			npm install bcryptjs jsonwebtoken validator nodemailer cookie-parser body-parser
 ```
@@ -719,7 +719,7 @@ Step 55: Open the terminal and add the following packages into your workplace
 **cookie-parser:** is used to store the jsonwebtoken inside cookies
 
 
-Step 56: Inside the **"models"** folder. Make a new file named **"userModel.js"** and type the following code in it
+**Step 56:** Inside the **"models"** folder. Make a new file named **"userModel.js"** and type the following code in it
 ```
 	const mongoose = require("mongoose");
 	const validator = require("validator");
@@ -766,7 +766,7 @@ Step 56: Inside the **"models"** folder. Make a new file named **"userModel.js"*
 ```
 
 ## Register a User
-Step 57: Make a new file named **"userController.js"** inside **"models"**
+**Step 57:** Make a new file named **"userController.js"** inside **"models"**
 
 ```
 		const ErrorHandler = require("../utils/errorhandler");
@@ -792,7 +792,7 @@ Step 57: Make a new file named **"userController.js"** inside **"models"**
 	})
 ```
 
-Step 58: Make a new file named **"userRoute.js"** inside **"routes"** folder inside **"backend"**. Add the following code into it
+**Step 58:** Make a new file named **"userRoute.js"** inside **"routes"** folder inside **"backend"**. Add the following code into it
 ```
 	const express = require("express");
 	const { registerUser } = require("../controllers/userController");
@@ -804,7 +804,7 @@ Step 58: Make a new file named **"userRoute.js"** inside **"routes"** folder ins
 	module.exports = router;
 ```
 
-Step 59: Go to the "app.js" file and add the following code below where the "product" route is imported
+**Step 59:** Go to the "app.js" file and add the following code below where the "product" route is imported
 ```
 			const user = require("./routes/userRoute");
 ```
@@ -834,11 +834,11 @@ Step 59: Go to the "app.js" file and add the following code below where the "pro
 	module.exports = app;
 ```
 ## Hashing the Password
-Step 60: Go to the **"userModel.js"** inside **"models"** and add the following code at the top:
+**Step 60:** Go to the **"userModel.js"** inside **"models"** and add the following code at the top:
 ```
 			const bcrypt = require("bcryptjs")
 ```
-Step 61: In the same file, above the *module.exports = mongoose.model("User",userSchema);* add the following code:
+**Step 61:** In the same file, above the *module.exports = mongoose.model("User",userSchema);* add the following code:
 ```
 	userSchema.pre("save", async function(next){
 
@@ -852,12 +852,12 @@ Step 61: In the same file, above the *module.exports = mongoose.model("User",use
 	In this code we have used **function** rather than a callback function and the reason is that we can use *this* inside the **function** but cannot use it inside **callback** function
 	*If* condition is showing that if the password is modified by the user then only hash it othervise leave it and in this way we'll save the code from hashing the hashed passwords.
 
-Step 62: Go to the file **"userModel.js"** inside **"models"** folder and import the following
+**Step 62:** Go to the file **"userModel.js"** inside **"models"** folder and import the following
 ```
 			const jwt = require("jsonwebtoken");
 ```
 
-Step 63: In the same file type the following code at the end of the file just above *module.exports = mongoose.model("User",userSchema);*
+**Step 63:** In the same file type the following code at the end of the file just above *module.exports = mongoose.model("User",userSchema);*
 ```
 	// JWT Token
 	userSchema.methods.getJWTToken = function(){
@@ -867,13 +867,13 @@ Step 63: In the same file type the following code at the end of the file just ab
 	}
 ```
 
-Step 64: Go to the **"config.env"** file inside the folder **"config"** and add the following into it
+**Step 64:** Go to the **"config.env"** file inside the folder **"config"** and add the following into it
 ```
 			JWT_SECRET=kajdsfjkasdfklhsdkfhkasdhfkasdfk
 			JWT_EXPIRE=5d
 ```
 
-Step 65: Go to the file **"userController.js"** inside the **"controllers"** folder and update the *res.status* inside the *Register the User*. The code for *Register the User* will look like
+**Step 65:** Go to the file **"userController.js"** inside the **"controllers"** folder and update the *res.status* inside the *Register the User*. The code for *Register the User* will look like
 ```
 	// Register a User
 	exports.registerUser = catchAsyncErrors(async (req, res, next) => {
@@ -898,7 +898,7 @@ Step 65: Go to the file **"userController.js"** inside the **"controllers"** fol
 Now when you create a user using Post request inside the postman then it will not show the user rather it will show you the token generated for that user
 
 ## Login User
-Step 66: Go to the **"userController.js"** file inside the folder **"controllers"** and add the following code at the end of file
+**Step 66:** Go to the **"userController.js"** file inside the folder **"controllers"** and add the following code at the end of file
 ```
 	// Login User
 	exports.loginUser = catchAsyncErrors(async (req, res, next) => {
@@ -931,12 +931,12 @@ Step 66: Go to the **"userController.js"** file inside the folder **"controllers
 ```
 
 *400*: Bad Request Error
-*401": Unautorized
+*401*: Unautorized
 
 In this code *.select("+password")* is used because while creating the user Model we have make the password to select false so here we have to mannually select it
 First we check if the user is present and then we get the password and compare it with the database
 
-Step 67: Go to the **"userModel.js"** inside the folder **"models"** and type the following code above the *module.exports = mongoose.model("User",userSchema);*
+**Step 67:** Go to the **"userModel.js"** inside the folder **"models"** and type the following code above the *module.exports = mongoose.model("User",userSchema);*
 ```
 	// Compare Password
 	userSchema.methods.comparePassword = function(enteredPassword){
@@ -944,7 +944,7 @@ Step 67: Go to the **"userModel.js"** inside the folder **"models"** and type th
 	}
 ```
 
-Step 68: Go to the **"userRoute.js"** inside the folder **"routes"** and add the following route into it
+**Step 68:** Go to the **"userRoute.js"** inside the folder **"routes"** and add the following route into it
 ```
 				router.route("/login").post(loginUser);
 ```
@@ -953,7 +953,7 @@ Also you have to import the *loginUser* like
 	const { registerUser, loginUser } = require("../controllers/userController");
 ```
 
-Step 67: *** Now you don't have to write the following code again and again in the userController.js***
+**Step 67:** *** Now you don't have to write the following code again and again in the userController.js***
 ```
 	    const token = user.getJWTToken();
 
@@ -1048,13 +1048,13 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
     sendToken(user,200, res);
 })
 ```
-Step 68: Add the following into the **"config.env"** file inside the "config" folder"
+**Step 68:** Add the following into the **"config.env"** file inside the "config" folder"
 ```
 	COOKIE_EXPIRE=5
 ```
 Now when you send the ***Login User*** request in postman then it will show you the results in body and cookie in cookie
 
-Step 69: To make the logged in user access something let's say "getAllProducts" we make a new file named **"auth.js"** inside **"middleware"** folder and write the following code in it
+**Step 69:** To make the logged in user access something let's say "getAllProducts" we make a new file named **"auth.js"** inside **"middleware"** folder and write the following code in it
 ```
 	const catchAsyncErrors = require("./catchAsyncErrors");
 
@@ -1072,14 +1072,14 @@ Now update the products route into the following
 			router.route("/products").get(isAuthenticatedUser, getAllProducts);
 ```
 
-Step 70: Now go to the **"app.js"** and add the following code below the *app.use(express.json())*
+**Step 70:** Now go to the **"app.js"** and add the following code below the *app.use(express.json())*
 ```
 			const cookieParser = require("cookie-parser");
 ```
 
 Now you can go to the postman and go to the getProductDetails and send the Get Request and this will print the token in the console
 
-Step 71: Completion of **"auth.js"** is in the following
+**Step 71:** Completion of **"auth.js"** is in the following
 ```
 	const jwt = require("jsonwebtoken");
 	const ErrorHandler = require("../utils/errorhandler");
